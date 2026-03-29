@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEN — Developer & Creative Technologist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<canvas id="canvas-bg"></canvas>
+
+<audio id="bg-music" autoplay loop preload="auto">
+  <source src="./theme.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<div id="audioHelp" class="audio-help" role="status" aria-live="polite">
+  <span>Music is on . Tap to mute/unmute.</span>
+  <button id="audioHelpToggle" class="audio-help-btn">Mute</button>
+  <button id="audioHelpClose" class="audio-help-close">✕</button>
+</div>
+
+<div id="equalizer" class="equalizer hidden" aria-hidden="true">
+  <div class="bar" style="--delay: 0s"></div>
+  <div class="bar" style="--delay: 0.1s"></div>
+  <div class="bar" style="--delay: 0.2s"></div>
+  <div class="bar" style="--delay: 0.05s"></div>
+  <div class="bar" style="--delay: 0.15s"></div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">B<span>/</span>EN</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#github">GitHub</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#" class="nav-cta" onclick="downloadResume(event)">Resume</a>
+  <button id="music-toggle" class="nav-cta" style="margin-left:1rem;" onclick="toggleMusic()">
+    <span id="music-icon">🔊</span>
+  </button>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="grid-overlay"></div>
+  <div class="hero-terminal">
+    <span class="prompt">~/ben</span>
+    <span style="color:var(--neon)">$</span>
+    <span id="terminalText"></span>
+    <span class="blink"></span>
+  </div>
+  <h1 class="hero-name">BEN</h1>
+  <p class="hero-title">Developer &nbsp;·&nbsp; Ethical Hacker &nbsp;·&nbsp; AI Enthusiast</p>
+  <p class="hero-tagline">
+    <strong>Building AI, Exploring Security,</strong><br>
+    Creating Digital Experiences
+  </p>
+  <div class="hero-typed">
+    <span id="typedText"></span><span class="typed-cursor">|</span>
+  </div>
+  <div class="hero-buttons">
+    <a href="#projects" class="btn-primary">View Projects</a>
+    <a href="#contact" class="btn-outline">Get in Touch</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- ABOUT -->
+<div class="section-divider"></div>
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About Me</div>
+    <h2 class="section-title">Who is <span class="accent">BEN</span>?</h2>
+    <div class="about-grid">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:1.5rem" class="reveal">
+        <div class="profile-frame">
+          <div class="profile-img-wrap">
+            <img src="./me.jpg" alt="Ben profile" class="profile-photo" />
+            <span class="profile-avatar" aria-hidden="true">😊</span>
+            <div class="profile-equalizer" id="profileEqualizer" aria-hidden="true">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+          </div>
+        </div>
+        <div class="profile-badge">
+          <span class="online-dot"></span>
+          Available for work
+        </div>
+      </div>
+      <div class="reveal">
+        <p class="about-bio">
+          Hey, I'm <strong>BEN</strong> — a passionate <span class="highlight">developer</span>,
+          <span class="highlight">ethical hacker learner</span>, and <span class="highlight">AI enthusiast</span>
+          on a mission to build meaningful digital experiences.
+        </p>
+        <p class="about-bio">
+          I navigate the intersection of <strong>cybersecurity</strong>, <strong>intelligent systems</strong>,
+          and <strong>creative technology</strong>. Beyond code, I'm a
+          <strong>photographer</strong> who captures stories and a <strong>writer</strong> who
+          pours emotions into poetry.
+        </p>
+        <p class="about-bio">
+          Currently exploring the depths of <strong>AI systems</strong>,
+          <strong>web automation</strong>, and <strong>digital security</strong> —
+          always building, always learning.
+        </p>
+        <div class="about-tags">
+          <span class="tag">🤖 AI / ML</span>
+          <span class="tag">🔐 Cybersecurity</span>
+          <span class="tag">⚡ Automation</span>
+          <span class="tag">📷 Photography</span>
+          <span class="tag">✍️ Poetry</span>
+          <span class="tag">🌐 Web Dev</span>
+          <span class="tag">🐍 Python</span>
+          <span class="tag">🛡️ Kali Linux</span>
+        </div>
+        <div class="about-stats">
+          <div class="stat-item">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Projects Built</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">3+</span>
+            <span class="stat-label">Years Learning</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Curiosity Level</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div class="section-divider"></div>
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-label">Skills</div>
+    <h2 class="section-title">Tech <span class="accent2">Arsenal</span></h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <span class="skill-card-icon">💻</span>
+        <div class="skill-card-title">Programming</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Python</span><span class="skill-pct">90%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">JavaScript</span><span class="skill-pct">75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">HTML / CSS</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">C++</span><span class="skill-pct">70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">VS Code</span><span class="skill-pct">100%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="100"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-card-icon">🤖</span>
+        <div class="skill-card-title">Domains</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">AI / Machine Learning</span><span class="skill-pct">75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Web Security</span><span class="skill-pct">70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Automation</span><span class="skill-pct">80%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Digital Photography</span><span class="skill-pct">88%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Network Basics</span><span class="skill-pct">65%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-card reveal">
+        <span class="skill-card-icon">🔮</span>
+        <div class="skill-card-title">Tools</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Git & GitHub</span><span class="skill-pct">85%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Docker</span><span class="skill-pct">60%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Kali Linux</span><span class="skill-pct">75%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Figma</span><span class="skill-pct">70%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-row"><span class="skill-name">Blender</span><span class="skill-pct">50%</span></div>
+            <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<div class="section-divider"></div>
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">What I've <span class="accent">Built</span></h2>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-num">// 01</div>
+        <h3 class="project-title">AI Chatbot Assistant</h3>
+        <p class="project-desc">A context-aware conversational AI built with Python using advanced NLP models. Features multi-turn memory, sentiment analysis, and dynamic response generation.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">OpenAI API</span>
+          <span class="tech-badge">Flask</span>
+          <span class="tech-badge">NLP</span>
+        </div>
+        <a href="https://github.com/mahin" target="_blank" class="project-link">
+          View on GitHub
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-num">// 02</div>
+        <h3 class="project-title">Network Recon Tool</h3>
+        <p class="project-desc">An ethical hacking recon automation tool that performs subnet scanning, open port detection, OS fingerprinting, and vulnerability mapping with clean terminal output.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Scapy</span>
+          <span class="tech-badge">Kali Linux</span>
+          <span class="tech-badge">Nmap</span>
+        </div>
+        <a href="https://github.com/mahin" target="_blank" class="project-link">
+          View on GitHub
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-num">// 03</div>
+        <h3 class="project-title">Web Automation Suite</h3>
+        <p class="project-desc">A powerful browser automation framework for scraping, form submission, and task automation. Includes anti-detection mechanisms and scheduling support.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Selenium</span>
+          <span class="tech-badge">BeautifulSoup</span>
+          <span class="tech-badge">Playwright</span>
+        </div>
+        <a href="https://github.com/mahin" target="_blank" class="project-link">
+          View on GitHub
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-num">// 04</div>
+        <h3 class="project-title">Digital Portfolio v2</h3>
+        <p class="project-desc">This very website — a fully custom-built personal portfolio with terminal aesthetics, particle systems, scroll animations, and responsive dark-mode design.</p>
+        <div class="project-tech">
+          <span class="tech-badge">HTML</span>
+          <span class="tech-badge">CSS</span>
+          <span class="tech-badge">JavaScript</span>
+          <span class="tech-badge">Canvas API</span>
+        </div>
+        <a href="https://github.com/mahin" target="_blank" class="project-link">
+          View on GitHub
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-num">// 05</div>
+        <h3 class="project-title">Sentiment Analyzer API</h3>
+        <p class="project-desc">A REST API that performs real-time sentiment analysis on text, tweets, and social media data. Includes emotion detection, tone scoring, and JSON reporting.</p>
+        <div class="project-tech">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">FastAPI</span>
+          <span class="tech-badge">NLTK</span>
+          <span class="tech-badge">Transformers</span>
+        </div>
+        <a href="https://github.com/mahin" target="_blank" class="project-link">
+          View on GitHub
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-num">// 06</div>
+        <h3 class="project-title">Photography Archive</h3>
+        <p class="project-desc">A curated visual journal built with a minimal gallery interface. Showcases street, portrait, and abstract photography with lazy loading and fullscreen viewer.</p>
+        <div class="project-tech">
+          <span class="tech-badge">JavaScript</span>
+          <span class="tech-badge">CSS Grid</span>
+          <span class="tech-badge">WebP</span>
+          <span class="tech-badge">Intersection Observer</span>
+        </div>
+        <a href="https://github.com/mahin" target="_blank" class="project-link">
+          View on GitHub
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB -->
+<div class="section-divider"></div>
+<section id="github">
+  <div class="section-inner">
+    <div class="section-label">GitHub</div>
+    <h2 class="section-title">Open <span class="accent2">Source</span></h2>
+    <div class="github-section reveal">
+      <div class="github-profile-card">
+        <div class="github-icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="var(--neon)"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </div>
+        <div class="github-info">
+          <div class="github-username">@cybercat101</div>
+          <div class="github-desc">Building the future one commit at a time. Open to collaborations and interesting projects.</div>
+          <div class="github-stats">
+            <div class="gh-stat"><strong>15+</strong> Repositories</div>
+            <div class="gh-stat"><strong>50+</strong> Commits</div>
+            <div class="gh-stat"><strong>10+</strong> Stars</div>
+          </div>
+        </div>
+        <a href="https://github.com/cybercat101" target="_blank" class="btn-primary" style="align-self:center;white-space:nowrap">Visit Profile →</a>
+      </div>
+      <div class="repo-grid">
+        <div class="repo-card">
+          <div class="repo-name">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+            ai-chatbot
+          </div>
+          <div class="repo-desc">Context-aware conversational AI with multi-turn memory and sentiment analysis</div>
+          <div class="repo-meta">
+            <div class="repo-lang"><div class="lang-dot" style="background:#3776ab"></div>Python</div>
+            <div class="repo-lang">⭐ 4</div>
+          </div>
+        </div>
+        <div class="repo-card">
+          <div class="repo-name">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+            network-recon
+          </div>
+          <div class="repo-desc">Ethical hacking recon automation tool for subnet scanning and vulnerability mapping</div>
+          <div class="repo-meta">
+            <div class="repo-lang"><div class="lang-dot" style="background:#3776ab"></div>Python</div>
+            <div class="repo-lang">⭐ 6</div>
+          </div>
+        </div>
+        <div class="repo-card">
+          <div class="repo-name">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+            web-automator
+          </div>
+          <div class="repo-desc">Powerful browser automation with anti-detection and scheduling support</div>
+          <div class="repo-meta">
+            <div class="repo-lang"><div class="lang-dot" style="background:#f7df1e"></div>JavaScript</div>
+            <div class="repo-lang">⭐ 3</div>
+          </div>
+        </div>
+        <div class="repo-card">
+          <div class="repo-name">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+            portfolio
+          </div>
+          <div class="repo-desc">Personal portfolio website with terminal aesthetics and Canvas animations</div>
+          <div class="repo-meta">
+            <div class="repo-lang"><div class="lang-dot" style="background:#e34c26"></div>HTML</div>
+            <div class="repo-lang">⭐ 2</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="section-divider"></div>
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's <span class="accent">Connect</span></h2>
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="contact-info">
+          <h3>Got a project?<br>Let's build it.</h3>
+          <p>Whether you want to collaborate on an AI project, discuss cybersecurity, or just say hi — I'm always open to interesting conversations.</p>
+        </div>
+        <div class="social-links">
+          <a href="https://github.com/cybercat101" target="_blank" class="social-link">
+            <span class="social-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </span>
+            github.com/cybercat101
+          </a>
+          <a href="https://facebook.com/benjiralahi22" target="_blank" class="social-link">
+            <span class="social-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </span>
+            facebook.com/benjiralahi22
+          </a>
+          <a href="mailto:benjirmahin@email.com" class="social-link">
+            <span class="social-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 01-2.06 0L2 7"/></svg>
+            </span>
+            benjirmahin@email.com
+          </a>
+          <a href="https://t.me/benjirmahin" target="_blank" class="social-link">
+            <span class="social-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0a12 12 0 00-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 01.171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </span>
+            t.me/benjirmahin
+          </a>
+        </div>
+      </div>
+      <div class="reveal">
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" class="form-input" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-input" placeholder="your@email.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-textarea" placeholder="What's on your mind?..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message →</button>
+          <div class="form-success" id="formSuccess">
+            ✓ Message received. I'll get back to you soon.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">B<span>/</span>EN</div>
+    <p class="footer-text">
+      © 2025 Ben . Built with <span>♥</span> & caffeine · Code is poetry.
+    </p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
